@@ -103,7 +103,6 @@ void sort_menu(){
 }
 
 void menu_edit(){
-	backgroundcolor(GREEN);
 	
 	printf("|========================================================================|\n");
 	printf("|                             Edit Data                                  |\n");

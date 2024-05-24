@@ -1,3 +1,10 @@
+//Topik: Proyek PAS
+//Group 15
+//Izzan Nawa Syarif (2306266956)
+//Muhammad Rafli (2306250730)
+//Versi 1.0
+//22/05/2024
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
