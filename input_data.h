@@ -156,21 +156,30 @@ struct list* traverse_to(struct list **head, int count){
 int queue_to_list(struct queue **start, struct queue **end, struct list **head, struct data temporary, struct date *dt){
     int posisi, pilihan;
     struct list *pass = *head;
+    print_data_queue(start);
+    if(pass == NULL){
+        printf("Queue Kosong\n");
+    }
     printf("\tStatus Pelanggan\n");
     printf("\t1. Lanjut Proses Pembelian/Sewa\n");
-    printf("\t2. Cancel\n");
+    printf("\t2. Cancel (tidak jadi membeli)\n");
     printf("\t0. Kembali\n");
     printf("\tPilihan : ");
     scanf("%d", &pilihan);
     switch(pilihan){
         case 1:
             struct queue *hold = *start;
+            if(hold == NULL){
+                printf("Antrean Kosong, Tekan enter untuk kembali");
+                get();
+                get();
+                return -1;
+            }
+            print_data_unit(head);
             posisi = search_Unit(&pass);
             if(posisi == -1){
                 return posisi;
             }
-            *start = (*start)->link;
-            free(hold);
             struct list *current = traverse_to(head, posisi);
             if(strcasecmp("Dijual", current->unit.Status) == 0){
                 strcpy(current->unit.Pemilik, hold->nama);
@@ -182,13 +191,26 @@ int queue_to_list(struct queue **start, struct queue **end, struct list **head, 
             else if(strcasecmp("Disewakan", current->unit.Status) == 0){
                 strcpy(current->unit.Penghuni, hold->nama);
                 strcpy(current->unit.Status, "Disewa");
+                current->unit.tgl_start_sewa = dt->da_day;
+                current->unit.bln_start_sewa = dt->da_mon;
+                current->unit.thn_start_sewa = dt->da_year;
+                printf("Tanggal Selesai Sewa Belum ditentukan, Silahkan ubah di menu edit\n");
             }
             else{
+                printf("Tidak Tersedia\n");
                 return -1;
             }
+            *start = (*start)->link;
+            free(hold);
             break;
             
         case 2:
+            if(*start == NULL){
+                printf("Antrean Kosong, Tekan enter untuk kembali");
+                get();
+                get();
+                return -1;
+            }
             dequeue(start, end);
             break;
         case 0:
@@ -209,6 +231,12 @@ void tambah_unit(struct list **head, struct data temporary, struct rumah spek){
     temporary.tanggal_beli = 0;
     temporary.bulan_beli = 0;
     temporary.tahun_beli = 0;
+    temporary.tgl_start_sewa = 0;
+    temporary.bln_start_sewa = 0;
+    temporary.thn_start_sewa = 0;
+    temporary.tgl_end_sewa = 0;
+    temporary.bln_end_sewa = 0;
+    temporary.thn_end_sewa = 0;
     linked_list_add(head, temporary, spek);
 }
 

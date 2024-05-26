@@ -2,7 +2,7 @@
 //Group 15
 //Izzan Nawa Syarif (2306266956)
 //Muhammad Rafli (2306250730)
-//Versi 1.0
+//Versi 2.0
 //22/05/2024
 
 #include <stdio.h>
@@ -30,6 +30,12 @@ struct data{
     int tanggal_beli;
     int bulan_beli;
     int tahun_beli;
+    int tgl_start_sewa;
+    int bln_start_sewa;
+    int thn_start_sewa;
+    int tgl_end_sewa;
+    int bln_end_sewa;
+    int thn_end_sewa;
 };
 
 struct rumah{
@@ -92,6 +98,7 @@ int main(){
     int pilihan;
     while(1){
         while(login != 1){
+            cls();
             akun();
             int pilihan_akun;
             scanf("%d", &pilihan_akun);
@@ -102,6 +109,11 @@ int main(){
                 case 2:
                     case_akun_2(&database);//membuat akun baru
                     print_akun_file(&database);//menulis akun ke file
+                    break;
+                case 3:
+                    tentang_program();
+                    get();
+                    get();
                     break;
                 case 0://exit program
                     return 0;

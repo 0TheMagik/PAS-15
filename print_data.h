@@ -36,17 +36,19 @@ int print_data_unit(struct list **head){
         printf("\nData Unit Kosong\n");
         return 0;
     }
-	printf("|---------------------------------------------------------------------------------------------------------------------------------------------|\n");
-    printf("| %-3s| %-25s| %-9s| %-15s| %-25s| %-15s| %-10s| %-12s| %-10s|", "No", "Nama Pemilik", "No Unit", "Status", "Penghuni", "Harga Jual", "Tipe Sewa", "Harga Sewa", "Biaya IPL");
-	printf("\n|---------------------------------------------------------------------------------------------------------------------------------------------|\n");
+	printf("|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n");
+    printf("| %-3s| %-25s| %-9s| %-15s| %-25s| %-15s| %-10s| %-12s| %-17s| %-21s| %-23s| %-10s|\n", "No", "Nama Pemilik", "No Unit", "Status", "Penghuni", "Harga Jual", "Tipe Sewa", "Harga Sewa", 
+    "Tanggal Terjual", "Tanggal Mulai Sewa", "Tanggal Selesai Sewa", "Biaya IPL");
+	printf("|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n");
 	
     for (int i = 0; i < jumlah; i++) {
         count++;
-        printf("| %-3d| %-25s| %-9d| %-15s| %-25s| %-15ld| %-10s| %-12ld| %-10d|\n", 
+        printf("| %-3d| %-25s| %-9d| %-15s| %-25s| %-15ld| %-10s| %-12ld| %-2d/%-2d/%-11d| %-2d/%-2d/%-15d| %-2d/%-2d/%-17d| %-10d|\n", 
                 count, current->unit.Pemilik, current->unit.No_Unit, current->unit.Status, 
                 current->unit.Penghuni, current->unit.Harga_Jual, current->unit.tipe_Sewa, 
-                current->unit.Harga_Sewa, IPL[i]);
-        	printf("|---------------------------------------------------------------------------------------------------------------------------------------------|\n");
+                current->unit.Harga_Sewa, current->unit.tanggal_beli, current->unit.bulan_beli, current->unit.tahun_beli, 
+                current->unit.tgl_start_sewa, current->unit.bln_start_sewa, current->unit.thn_start_sewa, current->unit.tgl_end_sewa, current->unit.bln_end_sewa, current->unit.thn_end_sewa, IPL[i]);
+        printf("|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n");
         current = current->link;
     }
     printf("\n");
@@ -100,7 +102,7 @@ int biaya_perawatan_satuan(struct list **head){
         biaya = temp->unit.Harga_Jual * 0.02 + 1000000;
     }
     else{
-        biaya = temp->unit.Harga_Jual * 0.03 + 1000000;
+        biaya = temp->unit.Harga_Jual * 0.01 + 1000000;
     }
     return biaya;
 }
@@ -121,8 +123,11 @@ int print_list_detail(struct list **head){
     printf("| Penghuni        : %-25s        Luas Garasi          : %-16.2f |\n", current->unit.Penghuni, current->detail.panjang_garasi*current->detail.lebar_garasi);
     printf("| Tipe Sewa       : %-25s        Luas Rumah           : %-16.2f |\n", current->unit.tipe_Sewa, current->detail.panjang_rumah*current->detail.lebar_rumah);
     printf("----------------------------------------------------------------------------------------------\n");
-    printf("| Harga Sewa      : %-25ld       Tanggal Rumah Dibeli : %d/%d/%d         |\n", current->unit.Harga_Sewa, current->unit.tanggal_beli, current->unit.bulan_beli, current->unit.tahun_beli);
+    printf("| Harga Sewa      : %-25ld       Tanggal Rumah Dibeli : %-2d/%-2d/%d        |\n", current->unit.Harga_Sewa, current->unit.tanggal_beli, current->unit.bulan_beli, current->unit.tahun_beli);
     printf("| Harga Beli/Jual : %-25ld       IPL Rumah            : Rp %-15d|\n", current->unit.Harga_Jual, biaya);
+    printf("----------------------------------------------------------------------------------------------\n");
+    printf("| Tanggal Sewa    : %-2d/%-2d/%-23d  Tanggal Sewa Selesai : %-2d/%-2d/%-4d         |\n", current->unit.tgl_start_sewa, current->unit.bln_start_sewa, current->unit.thn_start_sewa, current->unit.tgl_end_sewa, 
+    current->unit.bln_end_sewa, current->unit.thn_end_sewa );
     printf("----------------------------------------------------------------------------------------------\n");
     printf("\tEdit Data Unit ? Y/N : ");
     edit_unit = data_loop();
@@ -165,6 +170,25 @@ int print_list_detail(struct list **head){
                 break;
             case 12:
                 edit_luasrumah(&current);
+                break;
+            case 13:
+                int pilih_tgl;
+                printf("Pilih Tanggal\n");
+                printf("1. Tanggal Mulai Sewa\n");
+                printf("2. Tanggal Selesai Sewa\n");
+                printf("Pilihan : ");
+                scanf("%d", &pilih_tgl);
+                switch(pilih_tgl){
+                    case 1:
+                        edit_tanggal_start_sewa(&current);
+                        break;
+                    case 2:
+                        edit_tanggal_end_sewa(&current);
+                        break;
+                    default:
+                        printf("\tinput salah\n");
+                        break;                        
+                }
                 break;
             default:
                 printf("\tinput salah\n");

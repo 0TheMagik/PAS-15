@@ -31,7 +31,7 @@ void edit_sertifikat(struct list **head){
             strcpy(current->detail.sertifikat, "HGB");
             break;
         default:
-            printf("input salah");
+            printf("input salah\n");
             break;
     }
 }
@@ -44,7 +44,7 @@ void edit_status_unit(struct list **head){
     printf("\t2. Terjual\n");
     printf("\t3. Disewakan\n");
     printf("\t4. Disewa\n");
-    printf("\ttPilihan : ");
+    printf("\tPilihan : ");
     scanf("%d", &pilihan);
     switch(pilihan){
         case 1: 
@@ -78,8 +78,9 @@ void edit_tipesewa(struct list **head){
     printf("\tTipe Sewa\n");
     printf("\t1. Bulanan\n");
     printf("\t2. Tahunan\n");
-    printf("\t3. Tidak Disewakan");
+    printf("\t3. Tidak Disewakan\n");
     printf("\tPilihan : ");
+    scanf("%d", &pilihan);
     switch(pilihan){
         case 1:
             strcpy(current->unit.tipe_Sewa, "Bulanan");
@@ -89,8 +90,9 @@ void edit_tipesewa(struct list **head){
             break;
         case 3:
             strcpy(current->unit.tipe_Sewa, "-");
+            break;
         default:
-            printf("\tinput salah");
+            printf("\tinput salah\n");
             break;
     }
 }
@@ -138,7 +140,7 @@ void edit_luasgarasi(struct list **head){
     scanf("%f", &current->detail.panjang_garasi);
     printf("\tLebar Garasi   : ");
     scanf("%f", &current->detail.lebar_garasi);
-    printf("\tLuas Garasi : %.2f", current->detail.panjang_garasi * current->detail.lebar_garasi);
+    printf("\tLuas Garasi : %.2f\n", current->detail.panjang_garasi * current->detail.lebar_garasi);
 }
 
 
@@ -150,6 +152,28 @@ void edit_luasrumah(struct list **head){
     scanf("%f", &current->detail.panjang_rumah);
     printf("\tLebar Rumah   : ");
     scanf("%f", &current->detail.lebar_rumah);
-    printf("\tLuas Rumah : %.2f", current->detail.panjang_rumah * current->detail.lebar_rumah);
+    printf("\tLuas Rumah : %.2f\n", current->detail.panjang_rumah * current->detail.lebar_rumah);
     
+}
+
+void edit_tanggal_start_sewa(struct list **head){
+    struct list *current = *head;
+
+    printf("Tanggal Mulai Sewa : ");
+    scanf("%d", &current->unit.tgl_start_sewa);
+    printf("Bulan Mulai Sewa   : ");
+    scanf("%d", &current->unit.bln_start_sewa);
+    printf("Tahun Mulai Sewa   : ");
+    scanf("%d", &current->unit.thn_start_sewa);
+}
+
+void edit_tanggal_end_sewa(struct list **head){
+    struct list *current = *head;
+
+    printf("Tanggal Selesai Sewa : ");
+    scanf("%d", &current->unit.tgl_end_sewa);
+    printf("Bulan Selesai Sewa   : ");
+    scanf("%d", &current->unit.bln_end_sewa);
+    printf("Tahun Selesai Sewa   : ");
+    scanf("%d", &current->unit.thn_end_sewa);
 }

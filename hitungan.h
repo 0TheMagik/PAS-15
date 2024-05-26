@@ -43,7 +43,7 @@ void biaya_perawatan(struct list **head, int *IPL){
                     
                 }
                 else{
-                    IPL[i] = save_cost->unit.Harga_Jual * 0.03 + 1000000;
+                    IPL[i] = save_cost->unit.Harga_Jual * 0.01 + 1000000;
                 }
                 save_cost = save_cost->link;
                 

@@ -43,7 +43,7 @@ void menu(struct date *dt){
         date(dt);
         printf("|=============================================|\n");
         printf("|                  Tangggal                   |\n");
-        printf("|                 %d/%d/%d                    |\n", dt->da_day, dt->da_mon, dt->da_year);
+        printf("|                 %-2d/%-2d/%-4d                  |\n", dt->da_day, dt->da_mon, dt->da_year);
 		printf("===============================================\n");
 		printf("|                                             |\n");
         printf("|                    MENU                     |\n");
@@ -55,9 +55,9 @@ void menu(struct date *dt){
         printf("|---|-----------------------------------------|\n");
         printf("| 3.| Edit Unit                               |\n");
         printf("|---|-----------------------------------------|\n");
-        printf("| 4.| Tambah Pelanggan ke Antrean             |\n");
+        printf("| 4.| Tambah Pembeli/Penyewa ke Antrean       |\n");
         printf("|---|-----------------------------------------|\n");
-        printf("| 5.| Pindahkan Pelanggan ke Unit             |\n");
+        printf("| 5.| Pindahkan Pembeli/Penyewa ke Unit       |\n");
         printf("|---|-----------------------------------------|\n");
         printf("| 6.| Search Unit                             |\n");
         printf("|---|-----------------------------------------|\n");
@@ -107,17 +107,19 @@ void menu_edit(){
 	printf("|========================================================================|\n");
 	printf("|                             Edit Data                                  |\n");
 	printf("|========================================================================|\n");
-    printf("| 1.| Edit Nama Pemilik               | 7. | Edit Harga Jual/Beli        |\n");
+    printf("| 1.| Edit Nama Pemilik               | 8. | Edit Jumlah Lantai          |\n");
     printf("|---|---------------------------------|----|-----------------------------|\n");
-    printf("| 2.| Edit Tipe Sertifikat            | 8. | Edit Jumlah Lantai          |\n");
+    printf("| 2.| Edit Tipe Sertifikat            | 9. | Edit Jumlah Kamar           |\n");
     printf("|---|---------------------------------|----|-----------------------------|\n");
-    printf("| 3.| Edit Status Unit                | 9. | Edit Jumlah Kamar           |\n");
+    printf("| 3.| Edit Status Unit                | 10.| Edit Jumlah WC              |\n");
     printf("|---|---------------------------------|----|-----------------------------|\n");
-    printf("| 4.| Edit Nama Penghuni              | 10.| Edit Jumlah WC              |\n");
+    printf("| 4.| Edit Nama Penghuni              | 11.| Edit Luas Garasi            |\n");
     printf("|---|---------------------------------|----|-----------------------------|\n");
-    printf("| 5.| Edit Tipe Sewa                  | 11.| Edit Luas Garasi            |\n");
+    printf("| 5.| Edit Tipe Sewa                  | 12.| Edit Luas Rumah             |\n");
     printf("|---|---------------------------------|----|-----------------------------|\n");
-    printf("| 6.| Edit Harga Sewa                 | 12.| Edit Luas Rumah             |\n");
+    printf("| 6.| Edit Harga Sewa                 | 13.| Edit Tanggal Sewa           |\n");
+    printf("|---|---------------------------------|----|-----------------------------|\n");
+    printf("| 7.| Edit Harga Jual/Beli                                               |\n");
     printf("|========================================================================|\n");
     printf("|\tMasukkan Pilihan : ");
 }

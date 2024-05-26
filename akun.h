@@ -10,11 +10,14 @@
 void akun(){
 	backgroundcolor(BLUE);
 	printf("|====================================|\n");
+    printf("|     Program Manajemen Perumahan    |\n");
 	printf("|            Selamat Datang          |\n");
 	printf("|====================================|\n");
     printf("| 1.| Login                          |\n");
     printf("|---|--------------------------------|\n");
     printf("| 2.| Buat akun                      |\n");
+    printf("|---|--------------------------------|\n");
+    printf("| 3.| Tentang Program                |\n");
     printf("|---|--------------------------------|\n");
     printf("| 0.| Exit Program                   |\n");
     printf("|---|--------------------------------|\n");
@@ -128,4 +131,23 @@ void read_akun_file(struct akun **head){
     }
 
     fclose(data_akun_csv);
+}
+
+void tentang_program(){
+    cls();
+    printf("    Program ini berfungsi untuk memudahkan pengurus perumahan dalam mendata/mengatur data sebuah perumahan\n");
+    printf("User dapat menambah unit, menambah antrian calon pembeli/penyewa, dan melihat data summary perumahan\n");
+    printf("User juga dapat mencatat status rumah disewakan atau tidak walau dalam kapasitas terbatas. Kapasitas tersebut\n");
+    printf("meliputi Mencatat tanggal mulai sewa dan akhir sewa, Tipe sewa (pembayaran Tahunan atau Bulanan), dan mencatat\n");
+    printf("biaya sewa rumah tersebut.\n\n");
+    printf("    Program Ini mencatat spesifikasi rumah dan tanggal terjualnya serta mampu melakukan perhitungan IPL dengan\n");
+    printf("menggunakan Multithreading dari Library OMP, metode searching dari program ini juga menggunakan multithreading.\n\n");
+    printf("Keterangan Tambahan: \n");
+    printf("*IPL  adalah biaya yang harus dibayarkan pada pengurus secara bulanan\n");
+    printf(" biaya IPL dibagi menjadi 2 bergantung pada sertifikat rumah\n");
+    printf(" - SHM : Harga Jual Rumah X 0,02 + 1.000.000\n");
+    printf(" - SHM : Harga Jual Rumah X 0,01 + 1.000.000\n");
+    printf("*Baca dan Ikuti seluruh Petunjuk dari program untuk experience yang lebih baik\n\n");
+    printf("Tekan Enter Untuk kembali...");
+
 }

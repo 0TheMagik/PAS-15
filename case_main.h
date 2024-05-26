@@ -68,6 +68,7 @@ int case_3(struct list **head){
 
     while(run == 0){
         while(run1 == 0){
+        print_data_unit(head);
         posisi = search_Unit(head);
         if(posisi == -1 ){
             printf("\tSearch Kembali1 ? Y/N : ");
@@ -112,7 +113,7 @@ int case_5(struct queue **start, struct queue **end, struct list **head, struct 
     int run;
     run = queue_to_list(start, end, head, temporary, dt);
     if(run == -1){
-        printf("\tSearch Kembali1 ? Y/N : ");
+        printf("\tTetap Disini ? Y/N : ");
         return konfirmasi();
     }
     printf("\n\tLanjut Memindahkan ? Y/N : ");
@@ -130,6 +131,7 @@ int case_6(struct list **head){
     switch(pilihan){
         case 1:
             while(limit != -1){
+                cls();
                 search_Unit(head);
                 limit = search_loop();    
             }
@@ -137,12 +139,14 @@ int case_6(struct list **head){
             break;
         case 2:
             while(limit != -1){
+                cls();
                 limit = search_pemilik(head);    
             }
             limit = 0;
             break;
         case 3:
             while(limit != -1){
+                cls();
                 limit = search_penghuni(head);    
             }
             limit = 0;
